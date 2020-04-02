@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ssm.dao.ImgDao">
+	<sql id="sqlPiece">
+		id,img_file
+	</sql>
+	<select id="selectImgById" parameterType="int" resultMap="ImgMapper">
+			select 
+				<include refid="sqlPiece"></include>
+			from 
+				img
+			where
+				id = #{id}
+	</select>
+	<insert id="insertImg" parameterType="com.ssm.pojo.Img">
+		insert into img values(#{id},#{imgFile});
+	</insert>
+	<!-- 手动定义对应关系 -->
+	<resultMap type="com.ssm.pojo.Img" id="ImgMapper">
+		<result column="id" property="id"/>
+		<result column="img_file" property="imgFile"/>
+	</resultMap>
+</mapper>

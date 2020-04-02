@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ssm.dao.StudentDao">
+	<sql id="sqlPiece">
+		id,name,city,age
+	</sql>
+	<select id="selectAll" parameterType="com.ssm.pojo.Student" resultMap="studentMapper">
+			select 
+				<include refid="sqlPiece"></include>
+			from 
+				student
+	</select>
+	<update id="updateStudent" parameterType="com.ssm.pojo.Student">
+		update 
+			student
+		<set>
+			<if test="name neq null and name neq ''">
+				name = #{name},
+			</if>
+			<if test="city neq null and city neq ''">
+				city = #{city},
+			</if>
+			<if test="age neq null">
+				age = #{age},
+			</if>
+		</set>
+		where
+			id = #{id}
+	</update>
+	<!-- 手动定义对应关系 -->
+	<resultMap type="com.ssm.pojo.Student" id="studentMapper">
+		<result column="id" property="id"/>
+		<result column="name" property="name"/>
+		<result column="city" property="city"/>
+		<result column="age" property="age"/>
+	</resultMap>
+</mapper>

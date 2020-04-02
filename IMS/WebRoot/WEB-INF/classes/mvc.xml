@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mvc [
+	<!ELEMENT mvc (package*)>
+	<!ELEMENT package (action+)>
+	<!ATTLIST package name CDATA #REQUIRED>
+	<!ATTLIST package namespace CDATA #REQUIRED>
+	<!ELEMENT action (result+)>
+	<!ATTLIST action id CDATA #REQUIRED>
+	<!ATTLIST action name CDATA #REQUIRED>
+	<!ATTLIST action method CDATA #REQUIRED>
+	<!ELEMENT result (#PCDATA)>
+	<!ATTLIST result name CDATA #REQUIRED>
+	<!ATTLIST result type CDATA #REQUIRED>
+]>
+<!-- http://127.0.0.1:8080/项目名/  命名空间  /  操作名 .do -->
+<mvc>
+	<package name="user" namespace="user">
+		<action id="userAction" name="login" method="login">
+			<result type="redirect" name="success">/njwb/main.jsp</result>
+			<result type="forward" name="fail">/njwb/login.jsp</result>
+		</action>
+		<action id="userAction" name="updatePwd" method="updatePwd">
+			<result type="redirect" name="success">/njwb/pwdReset/pwdReset.jsp</result>
+			<result type="forward" name="fail">/njwb/pwdReset/pwdReset.jsp</result>
+		</action>
+	</package>
+	<package name="dept" namespace="dept">
+		<action id="deptAction" name="getUserByPage" method="getUserByPage">
+			<result type="ajax" name="success"/>
+		</action>
+		<action id="deptAction" name="selectDept" method="selectDept">
+			<result type="ajax" name="success"/>
+		</action>
+		<action id="deptAction" name="addDept" method="addDept">
+			<result type="redirect" name="success">/njwb/dept/deptAdd.jsp</result>
+			<result type="forward" name="fail">/njwb/dept/deptAdd.jsp</result>
+		</action>
+		<action id="deptAction" name="updateDept" method="updateDept">
+			<result type="redirect" name="success">/njwb/dept/dept.jsp</result>
+			<result type="forward" name="fail">/njwb/dept/deptEdit.jsp</result>
+		</action>
+		
+		<action id="deptAction" name="removeDept" method="removeDept">
+			<result type="ajax" name="success"></result>
+		</action>
+		<action id="deptAction" name="getDeptMessage" method="getDeptMessage">
+			<result type="ajax" name="success"></result>
+		</action>
+	</package>
+
+
+	<package name="employee" namespace="employee">
+		<action id="employeeAction" name="selectAll" method="selectAll">
+			<result type="ajax" name="success" />
+		</action>
+		<action id="employeeAction" name="selectOneEmployee" method="selectOneEmployee">
+			<result type="ajax" name="success" />
+		</action>
+		<action id="employeeAction" name="addEmployee" method="addEmployee">
+			<result type="redirect" name="success">/njwb/employee/employee.jsp</result>
+			<result type="forward" name="fail">/njwb/employee/employAdd.jsp</result>
+		</action>
+		<action id="employeeAction" name="updateEmployee" method="updateEmployee">
+			<result type="redirect" name="success">/njwb/employee/employee.jsp
+			</result>
+			<result type="forward" name="fail">/njwb/employee/employEdit.jsp
+			</result>
+		</action>
+		<action id="employeeAction" name="removeEmployee" method="removeEmployee">
+			<result type="ajax" name="success"></result>
+		</action>
+		<action id="employeeAction" name="getEmployeeMessage" method="getEmployeeMessage">
+			<result type="ajax" name="success"></result>
+		</action>
+	</package>
+	
+	<package name="holiday" namespace="holiday">
+		<action id="holidayAction" name="selectAllHoliday" method="selectAllHoliday">
+			<result type="ajax" name="success" />
+		</action>
+		<action id="holidayAction" name="addHoliday" method="addHoliday">
+			<result type="redirect" name="success">/njwb/holiday/holiday.jsp
+			</result>
+			<result type="forward" name="fail">/njwb/holiday/holidayAdd.jsp
+			</result>
+		</action>
+		<action id="holidayAction" name="removeHoliday" method="removeHoliday">
+			<result type="ajax" name="success"></result>
+		</action>
+		<action id="holidayAction" name="getHolidayMessage" method="getHolidayMessage">
+			<result type="ajax" name="success" />
+		</action>
+		<action id="holidayAction" name="addHoliday" method="addHoliday">
+				<result type="redirect" name="success">/njwb/holiday/holiday.jsp</result>
+			<result type="forward" name="fail">/njwb/holiday/holidayAdd.jsp</result>
+		</action>
+		<action id="holidayAction" name="updateHoliday" method="updateHoliday">
+				<result type="redirect" name="success">/njwb/holiday/holiday.jsp</result>
+			<result type="forward" name="fail">/njwb/holiday/holidayEdit.jsp</result>
+		</action>	
+	</package>
+	
+	<package name="account" namespace="account">
+		<action id="accountAction" name="selectAll" method="selectAll">
+			<result type="ajax" name="success" />
+		</action>
+		<action id="accountAction" name="removeAccount" method="removeAccount">
+			<result type="ajax" name="success" />
+		</action>
+		<action id="accountAction" name="addAccount" method="addAccount">
+			<result type="redirect" name="success">/njwb/account/account.jsp</result>
+			<result type="forward" name="fail">/njwb/account/accountAdd.jsp</result>
+		</action>
+		<action id="accountAction" name="selectOneAccount" method="selectOneAccount">
+			<result type="ajax" name="success" />
+		</action>
+		<action id="accountAction" name="selectOneNo" method="selectOneNo">
+			<result type="ajax" name="success" />
+		</action>
+		<action id="accountAction" name="updateAccount" method="updateAccount">
+			<result type="redirect" name="success">/njwb/account/account.jsp</result>
+			<result type="forward" name="fail">/njwb/account/accountEdit.jsp</result>
+		</action>
+		<action id="accountAction" name="selectAccount" method="selectAccount">
+			<result type="ajax" name="success"/>
+		</action>
+		<action id="accountAction" name="ShiFouYouInput" method="ShiFouYouInput">
+			<result type="ajax" name="success"/>
+		</action>
+	</package>
+	
+	<package name="role" namespace="role">
+		<action id="roleAction" name="roleAll" method="roleAll">
+			<result type="ajax" name="success" />
+		</action>
+		<action id="roleAction" name="addRole" method="addRole">
+			<result type="redirect" name="success">/njwb/role/role.jsp</result>
+			<result type="forward" name="fail">/njwb/role/roleAdd.jsp</result>
+		</action>
+		<action id="roleAction" name="removeRole" method="removeRole">
+			<result type="ajax" name="success" />
+		</action>
+		<action id="roleAction" name="selectRole" method="selectRole">
+			<result type="ajax" name="success"/>
+		</action>
+		<action id="roleAction" name="updateRole" method="updateRole">
+			<result type="redirect" name="success">/njwb/role/role.jsp</result>
+			<result type="forward" name="fail">/njwb/role/roleEdit.jsp</result>
+		</action>
+	</package>
+	
+	<package name="merge" namespace="merge">
+		<action id="mergeAction" name="selectAll" method="selectAll">
+			<result type="ajax" name="success" />
+		</action>
+		<action id="mergeAction" name="selectMenu" method="selectMenu">
+			<result type="ajax" name="success"/>
+		</action>
+		<action id="mergeAction" name="removePermissions" method="removePermissions">
+			<result type="ajax" name="success" />
+		</action>
+		<action id="mergeAction" name="addMerge" method="addMerge">
+			<result type="redirect" name="success">/njwb/permissions/permissions.jsp</result>
+			<result type="forward" name="fail">/njwb/permissions/permissionsAdd.jsp</result>
+		</action>
+		<action id="mergeAction" name="updateMerge" method="updateMerge">
+			<result type="redirect" name="success">/njwb/permissions/permissions.jsp</result>
+			<result type="forward" name="fail">/njwb/permissions/permissionsEdit.jsp</result>
+		</action>
+		<action id="mergeAction" name="selectMerge" method="selectMerge">
+			<result type="ajax" name="success" />
+		</action>
+	</package>
+
+<package name="expense" namespace="expense">
+		<action id="expenseAction" name="selectAll" method="selectAll">
+			<result type="ajax" name="success" />
+		</action>
+		<action id="expenseAction" name="getExpenseMessage" method="getExpenseMessage">
+			<result type="ajax" name="success" />
+		</action>
+		<action id="expenseAction" name="removeExpense" method="removeExpense">
+			<result type="ajax" name="success"></result>
+		</action>
+		<action id="expenseAction" name="addExpense" method="addExpense">
+				<result type="redirect" name="success">/njwb/expense/expense.jsp</result>
+			<result type="forward" name="fail">/njwb/expense/expenseAdd.jsp</result>
+		</action>
+		<action id="expenseAction" name="updateExpense" method="updateExpense">
+				<result type="redirect" name="success">/njwb/expense/expense.jsp</result>
+			<result type="forward" name="fail">/njwb/expense/expenseEdit.jsp</result>
+		</action>
+	</package>
+
+</mvc>

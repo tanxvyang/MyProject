@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ssm.dao.CardDao">
+	<sql id="sqlPiece">
+			id,username,pro,tele,iphone,email,addr,img
+	</sql>
+	<select id="selectCardById" parameterType="int" resultMap="CardMapper">
+			select 
+				<include refid="sqlPiece"></include>
+			from 
+				card
+			where
+				id = #{id}
+	</select>
+	<insert id="insertCard" parameterType="com.ssm.pojo.Card">
+		insert into 
+			card(username,pro,tele,iphone,email,addr,img) 
+		values
+			(#{username},#{pro},#{tele},#{iphone},#{email},#{addr},#{img});
+		<selectKey keyProperty="id" resultType="int">
+			select LAST_INSERT_ID() as id
+		</selectKey>
+	</insert>
+	<update id="updateCard" parameterType="com.ssm.pojo.Card">
+		update 
+			card
+		<set>
+			<if test="username neq null and username neq '' ">
+				username = #{username},	
+			</if>
+			<if test="pro neq null">
+				pro = #{pro},	
+			</if>
+			<if test="tele neq null and tele neq '' ">
+				tele = #{tele},	
+			</if>
+			<if test="iphone neq null and iphone neq '' ">
+				iphone = #{iphone},	
+			</if>
+			<if test="email neq null and email neq '' ">
+				email = #{email},	
+			</if>
+			<if test="addr neq null and addr neq '' ">
+				addr = #{addr},	
+			</if>
+			<if test="img neq null and img neq '' ">
+				img = #{img},	
+			</if>
+		</set>
+		where
+			id = #{id}
+	</update>
+	<!-- 手动定义对应关系 -->
+	<resultMap type="com.ssm.pojo.Card" id="CardMapper">
+		<result column="id" property="id"/>
+		<result column="username" property="username"/>
+		<result column="pro" property="pro"/>
+		<result column="tele" property="tele"/>
+		<result column="iphone" property="iphone"/>
+		<result column="email" property="email"/>
+		<result column="addr" property="addr"/>
+		<result column="img" property="img"/>
+	</resultMap>
+</mapper>

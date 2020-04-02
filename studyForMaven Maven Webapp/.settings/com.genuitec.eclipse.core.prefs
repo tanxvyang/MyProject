@@ -1,0 +1,3 @@
+eclipse.preferences.version=1
+validator.Checked=src/main/java/applicationContext-mvc.xml,src/main/java/applicationContext.xml
+validator.Unchecked=
